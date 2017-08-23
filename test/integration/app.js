@@ -1,19 +1,20 @@
+/* eslint-disable no-undef */
 describe('Routes Books', () => {
   const Books = app.datasource.models.Books
   const defaultBook = {
     id: 1,
-    name: 'Default Book'
+    name: 'Default Book',
   }
 
-  beforeEach(done => {
+  beforeEach((done) => {
     Books
-      .destroy({where: {}})
+      .destroy({ where: {} })
       .then(() => Books.create(defaultBook))
       .then(() => done())
   })
 
   describe('Route GET /books', () => {
-    it('should return a list of books', done => {
+    it('should return a list of books', (done) => {
       request
         .get('/books')
         .end((err, res) => {
@@ -26,7 +27,7 @@ describe('Routes Books', () => {
   })
 
   describe('Route GET /books/{id}', () => {
-    it('should return a book', done => {
+    it('should return a book', (done) => {
       request
         .get('/books/1')
         .end((err, res) => {
@@ -39,10 +40,10 @@ describe('Routes Books', () => {
   })
 
   describe('Route POST /books', () => {
-    it('should create book', done => {
+    it('should create book', (done) => {
       const newBook = {
         id: 2,
-        name: 'newBook'
+        name: 'newBook',
       }
       request
         .post('/books')
@@ -57,10 +58,10 @@ describe('Routes Books', () => {
   })
 
   describe('Route PUT /books/{id}', () => {
-    it('should update a book', done => {
+    it('should update a book', (done) => {
       const updatedBook = {
         id: 1,
-        name: 'updated book'
+        name: 'updated book',
       }
       request
         .put('/books/1')
@@ -74,7 +75,7 @@ describe('Routes Books', () => {
   })
 
   describe('Route DELETE /books/{id}', () => {
-    it('should delete a book', done => {
+    it('should delete a book', (done) => {
       request
         .delete('/books/1')
         .end((err, res) => {
@@ -84,6 +85,4 @@ describe('Routes Books', () => {
         })
     })
   })
-
-
 })
